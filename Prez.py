@@ -8,13 +8,13 @@ import boto3
 
 public = os.getenv('PUBLIC_AWS')
 secret = os.getenv('SECRET_AWS')
-print(public)
+print(secret)
 
 
 # Connexion à Amazon S3
 s3 = boto3.client('s3',
-                  aws_access_key_id='PUBLIC_AWS',
-                  aws_secret_access_key='SECRET_AWS')
+                  aws_access_key_id=public,
+                  aws_secret_access_key=secret)
 
 # Téléchargement du fichier CSV depuis S3
 bucket_name = 'bucketwildfire'
