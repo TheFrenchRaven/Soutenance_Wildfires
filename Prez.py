@@ -20,10 +20,6 @@ file_name = 'wildfire_base_clean.csv'
 obj = s3.get_object(Bucket=bucket_name, Key=file_name)
 df = pd.read_csv(obj['Body'])
 
-# Affichage des données dans l'application Streamlit
-st.write(data)
-
-
 
 st.title("Analyse des feux de forêts aux USA")
 st.sidebar.title("Feux de forêts aux USA")
