@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sn
 import os
+import boto3
 
 pub_test = os.getenv('PUBLIC_AWS')
 print(pub_test)
