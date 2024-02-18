@@ -32,6 +32,7 @@ if page == pages[0] :
     st.divider()
     fig = plt.figure()
     sns.countplot(x = 'annee', data = df)
+    plt.xticks(rotation=90)
     st.pyplot(fig)
     st.divider()
     st.write("https://www.fs.usda.gov/rds/archive/catalog/RDS-2013-0009.6")
