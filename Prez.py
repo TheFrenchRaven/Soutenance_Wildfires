@@ -5,9 +5,12 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 import boto3
-
-public = os.getenv('PUBLIC_AWS')
-secret = os.getenv('SECRET_AWS')
+from decouple import config
+public = config('PUBLIC_AWS')
+secret = config('SECRET_AWS')
+#old
+# public = os.getenv('PUBLIC_AWS')
+# secret = os.getenv('SECRET_AWS')
 
 # Connexion à Amazon S3
 s3 = boto3.client('s3',
