@@ -6,8 +6,9 @@ import seaborn as sn
 import os
 import boto3
 
-pub_test = os.getenv('PUBLIC_AWS')
-print(pub_test)
+public = os.getenv('PUBLIC_AWS')
+secret = os.getenv('SECRET_AWS')
+print(public,secret)
 
 # Connexion à Amazon S3
 s3 = boto3.client('s3',
@@ -32,7 +33,7 @@ pages=["Présentation du jeu de données", "Préparation des données", "Data Vi
 page=st.sidebar.radio("Allez vers", pages)
 if page == pages[0] :
     st.write("## Présentation du jeu de données : première exploration")
-    st.dataframe(data.head())
+    st.dataframe(df.head())
     st.divider()
     st.write("https://www.fs.usda.gov/rds/archive/catalog/RDS-2013-0009.6")
     st.divider()
