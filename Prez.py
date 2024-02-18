@@ -3,6 +3,27 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sn
+import os
+
+pub_test = os.getenv('PUBLIC_AWS')
+print(pub_test)
+
+# Connexion à Amazon S3
+s3 = boto3.client('s3',
+                  aws_access_key_id='VOTRE_ACCESS_KEY_ID',
+                  aws_secret_access_key='VOTRE_SECRET_ACCESS_KEY')
+
+# Téléchargement du fichier CSV depuis S3
+bucket_name = 'votre-bucket-s3'
+file_name = 'votre-fichier.csv'
+obj = s3.get_object(Bucket=bucket_name, Key=file_name)
+data = pd.read_csv(obj['Body'])
+
+# Affichage des données dans l'application Streamlit
+st.write(data)
+
+
+
 st.title("Analyse des feux de forêts aux USA")
 st.sidebar.title("Feux de forêts aux USA")
 st.sidebar.header("Déroulé du projet")
