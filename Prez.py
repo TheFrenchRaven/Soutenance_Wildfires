@@ -18,7 +18,7 @@ response = requests.get(url)
 # Check if the request was successful
 if response.status_code == 200:
     # Write the content to a local file
-    with open('data.csv', 'r') as f:
+    with open('data.csv', 'wb') as f:
        df=pd.read_csv(f)
 
 
