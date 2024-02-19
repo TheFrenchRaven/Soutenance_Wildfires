@@ -4,6 +4,26 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sn
 
+import requests
+
+# Replace 'FILE_ID' with the actual ID of your Google Drive file
+file_id = '10R41W-YfpWcFoc-D-PvKWmtGuayjWxZB'
+
+# Google Drive API endpoint to download the file
+url = f'https://drive.google.com/uc?id={file_id}'
+
+# Send a GET request to download the file content
+response = requests.get(url)
+
+# Check if the request was successful
+if response.status_code == 200:
+    # Write the content to a local file
+    with open('data.csv', 'r') as f:
+       f.write(response.content)
+       df.read_csv(f)
+
+
+
 # Les titres 
 st.title("Analyse des feux de forêts aux USA")
 st.sidebar.title("**Feux de forêts aux USA**")
@@ -24,11 +44,12 @@ pages=["1a.Compréhension du jeu de données", "1b.Volumétrie du jeu de donnée
 page = st.sidebar.radio("                 Cochez la page à afficher", pages)
 
 if page == pages[0] :
-    st.write("## Compréhension du jeu de données : première exploration")
-    st.divider()
-    st.write("https://www.fs.usda.gov/rds/archive/catalog/RDS-2013-0009.6")
-    st.divider()
-    st.image("https://www.fs.usda.gov/sites/default/files/users/user3824/Photos/CWDG/SweetCrk-Milepost2Fire-Marcus-Kauffman.jpg")
+       st.write("## Compréhension du jeu de données : première exploration")
+       st.dataframe(df.head())
+       st.divider()
+       st.write("https://www.fs.usda.gov/rds/archive/catalog/RDS-2013-0009.6")
+       st.divider()
+       st.image("https://www.fs.usda.gov/sites/default/files/users/user3824/Photos/CWDG/SweetCrk-Milepost2Fire-Marcus-Kauffman.jpg")
 
 if page == pages[1] :
     st.write("## Préparation des données : complétude des données")
