@@ -4,24 +4,22 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sn
 
-import requests
+import gdown
 
 # Replace 'FILE_ID' with the actual ID of your Google Drive file
-file_id = '10R41W-YfpWcFoc-D-PvKWmtGuayjWxZB'
+file_id = '1m73Ot3M2O2YPPH1urzuTejOaOEQuDi2P'
 
 # Google Drive API endpoint to download the file
 url = f'https://drive.google.com/uc?id={file_id}'
 
-# Send a GET request to download the file content
-response = requests.get(url)
 
-# Check if the request was successful
-if response.status_code == 200:
-    # Write the content to a local file
-    with open('data.csv', 'wb') as f:
-       df=pd.read_csv(f)
+# Download the file into memory
+file = gdown.download(url,output="wildfire_base_clean.zip")
 
+# Convert the downloaded file bytes to a BytesIO object
+# file_in_memory = BytesIO(file_bytes)
 
+df=pd.read_csv(file,compression='zip')
 
 # Les titres 
 st.title("Analyse des feux de forêts aux USA")
