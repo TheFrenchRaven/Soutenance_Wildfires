@@ -19,7 +19,6 @@ response = requests.get(url)
 if response.status_code == 200:
     # Write the content to a local file
     with open('data.csv', 'r') as f:
-       f.write(response.content)
        df.read_csv(f)
 
 
