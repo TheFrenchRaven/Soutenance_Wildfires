@@ -2,24 +2,29 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sn
+import seaborn as sns
+import pickle
 
-import gdown
+# import gdown
 
-# Replace 'FILE_ID' with the actual ID of your Google Drive file
-file_id = '1m73Ot3M2O2YPPH1urzuTejOaOEQuDi2P'
+# # Replace 'FILE_ID' with the actual ID of your Google Drive file
+# file_id = '1m73Ot3M2O2YPPH1urzuTejOaOEQuDi2P'
 
-# Google Drive API endpoint to download the file
-url = f'https://drive.google.com/uc?id={file_id}'
+# # Google Drive API endpoint to download the file
+# url = f'https://drive.google.com/uc?id={file_id}'
 
 
-# Download the file into memory
-file = gdown.download(url,output="wildfire_base_clean.zip")
+# # Download the file into memory
+# file = gdown.download(url,output="wildfire_base_clean.zip")
 
-# Convert the downloaded file bytes to a BytesIO object
-# file_in_memory = BytesIO(file_bytes)
+# # Convert the downloaded file bytes to a BytesIO object
+# # file_in_memory = BytesIO(file_bytes)
 
-df=pd.read_csv(file,compression='zip')
+# df=pd.read_csv(file,compression='zip')
+
+# Load the model
+with open('head.pkl', 'rb') as f:
+    df_head = pickle.load(f)
 
 # Les titres 
 st.title("Analyse des feux de forêts aux USA")
@@ -41,12 +46,12 @@ pages=["1a.Compréhension du jeu de données", "1b.Volumétrie du jeu de donnée
 page = st.sidebar.radio("                 Cochez la page à afficher", pages)
 
 if page == pages[0] :
-       st.write("## Compréhension du jeu de données : première exploration")
-       st.dataframe(df.head())
-       st.divider()
-       st.write("https://www.fs.usda.gov/rds/archive/catalog/RDS-2013-0009.6")
-       st.divider()
-       st.image("https://www.fs.usda.gov/sites/default/files/users/user3824/Photos/CWDG/SweetCrk-Milepost2Fire-Marcus-Kauffman.jpg")
+    st.write("## Compréhension du jeu de données : première exploration")
+    st.write(df_head)
+    st.divider()
+    st.write("https://www.fs.usda.gov/rds/archive/catalog/RDS-2013-0009.6")
+    st.divider()
+    st.image("https://www.fs.usda.gov/sites/default/files/users/user3824/Photos/CWDG/SweetCrk-Milepost2Fire-Marcus-Kauffman.jpg")
 
 if page == pages[1] :
     st.write("## Préparation des données : complétude des données")
