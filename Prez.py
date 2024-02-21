@@ -86,6 +86,7 @@ if page == pages[7] :
     st.write('### DecisionTreeClassifier')
     st.write('score sur le jeu de test : 0.5963221118196649')
     st.write('score sur le jeu de train: 0.9997713664254686')
+    st.image("MatConf_ClassReport-RF_1.png")
     st.divider()
 
 if page == pages[8] :
