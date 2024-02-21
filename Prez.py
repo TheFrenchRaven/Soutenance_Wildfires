@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pickle
+from PIL import Image
 
 # import gdown
 
@@ -26,6 +27,7 @@ import pickle
 with open('head.pkl', 'rb') as f:
     df_head = pickle.load(f)
 
+
 # Les titres 
 st.title("Analyse des feux de forêts aux USA")
 st.sidebar.title("**Feux de forêts aux USA**")
@@ -47,7 +49,13 @@ page = st.sidebar.radio("                 Cochez la page à afficher", pages)
 
 if page == pages[0] :
     st.write("## Compréhension du jeu de données : première exploration")
-    st.write(df_head)
+    
+    display = st.radio('Que souhaitez-vous montrer ?', ('Head', 'Plot'))
+    if display == 'Head' : 
+        st.write(df_head)
+    elif display == 'Plot' : 
+        st.image('plot.png')
+
     st.divider()
     st.write("https://www.fs.usda.gov/rds/archive/catalog/RDS-2013-0009.6")
     st.divider()
