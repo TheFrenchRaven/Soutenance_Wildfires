@@ -26,6 +26,9 @@ df=pd.read_csv(file,compression='zip')
 with open('head.pkl','wb') as f : 
     pickle.dump(df.head(),f)
 
+plt.figure(figsize=(10, 6))
+sns.countplot(data=df, x='annee')
+plt.savefig('plot.png')
 
 
 if __name__ == "__main__" : 
