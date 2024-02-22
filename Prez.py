@@ -97,6 +97,36 @@ if page == pages[7] :
 
     st.write('Features Importances du RandomForestClassifier (20 premières fonctionnalités)')
     st.image("Feat_Importance_RF_1.png")
+
+    st.write('#### Ajustement des hyperparamètres du RandomForestClassifier')   
+    col1, col2, col3, col4 = st.columns(4)
+    col1.metric("max_depth", "None")
+    col2.metric("min_samples_leaf", "1")
+    col3.metric("min_samples_split", "10")
+    col4.metric("n_estimators", "200")
+       
+    st.metric("Score X_test", "0.6778140293637847")
+    st.write("Le modèle RandomForest performe mieux sans limitation de la profondeur des arbres.")
+    st.write("L'optimisation des hyperparamètres a contribué à améliorer la performance du RandomForest par rapport à ses paramètres par défaut. Il semble mieux généraliser aux données non vues dans l'ensemble de test.")
+       
+    st.write('Classification Report & Matrice de Confusion du RandomForestClassifier aprés ajustement des hyperparaètres')
+    st.image("MatConf_ClassReport-RF_2(optimisation).png")
+    st.write('Le modèle semble bien performant pour les classes A et B, mais a des difficultés avec les autres classes')
+    st.write('Défis potentiels dans la classification des classes moins fréquentes ou moins bien représentées.')
+    st.image("DistributionClasse_avant_prediction.png")  
+    st.image("DistributiClassePrédites_RF.png") 
+    st.write('Les classes moins fréquentes (F et G) présentent des difficultés plus importantes pour le modèle.')
+    st.image("Valeurs_Predites_RF.png")
+
+    st.write('## Autres modèles testés')
+    col1, col2, col3 = st.columns(3)
+    col1.metric("SVM : Score X_test", "0.6731054426812991")
+    col2.metric("Gradient Boosting : Score X_test", "0.6499147263829156")
+    col3.metric("knn : Score X_test", "0.6440753373869198")
+
+    
+       
+       
        
     st.divider()
 
