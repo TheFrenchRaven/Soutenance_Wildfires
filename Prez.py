@@ -135,7 +135,62 @@ if page == pages[8] :
     st.write('###Titre')
     st.write('blablabla')
     st.divider()
+
+if page == pages[9] : 
+    st.write('## Testes Statistiques')
+    st.write('### ANOVA : Test de Kruskal-Wallis (Végétation régionale & Taille des feux)')
+    st.write('H0 : Il n'y a pas d'effet significatif de la végétation sur la Taille des feux')
+    col1, col2 = st.columns(2)
+    col1.metric("KruskalResult(statistic)", "97811.02482749475")
+    col2.metric("pvalue", "0.0")
+    st.write('On rejette H0 : Il y a un effet statistique significatif de la végétation sur la taille des feux')
+
+    st.write('### ANOVA : Test de Kruskal-Wallis (Cause & Taille des feux')
+    st.write('H0 : Il n'y a pas d'effet significatif de la cause sur la Taille des feux')
+    col1, col2 = st.columns(2)
+    col1.metric("KruskalResult(statistic)", "29011.246268456314")
+    col2.metric("pvalue", "0.0")
+    st.write('On rejette H0 : la cause des feux semble bien avoir un impact significatif sur la taille des feux : cas des causes naturelles en majorité dans le Sud Ouest et Nord Ouest')
+
+    st.write('### Corrélation : Test de Pearson (Précipitation moy. mens. & Taille des feux)')
+    st.write('H0 : Il n'y a pas de corrélation entre la précipitation et la Taille des feux')
+    col1, col2 = st.columns(2)
+    col1.metric("Corrélation de Pearson(précipitation moy.mens.)", "-0.02047855970785961")
+    col2.metric("pvalue", "3.49452e-207")
+    st.write("On rejette H0 : corrélation statistiquement significative entre Précipitation moy. mens. et Taille des feux, mais une corrélation négative très faible et proche de 0 (-0,02)")
+
+    st.write('### Corrélation : Test de Spearman (Précipitation moy. mens. & Taille des feux)')
+    st.write('H0 : Il n'existe pas de relation linéaire entre la précipitation et la Taille des feux')
+    col1, col2 = st.columns(2)
+    col1.metric("Corrélation de Spearman", "0.15550443118114127")
+    col2.metric("pvalue", "0.0")
+    st.write("On rejette H0 : Le test de Spearman confirme qu’il existe bien une relation statistique significative entre ces 2 variables")
+    st.image("Relation_Precip&TailleFeux.png")
+
+    st.write('### Corrélation : Test de Pearson (Température moy. mens. & Taille des feux')
+    st.write('H0 : Il n'y a pas de corrélation entre la Température moy.mens. et la Taille des feux')
+    col1, col2 = st.columns(2)
+    col1.metric("Corrélation de Pearson(température moy.mens.)", "0.011750792216244654")
+    col2.metric("pvalue", "1.61714208e-69")
+    st.write("On rejette H0 : Il existe une faible relation monotone entre la taille des feux et la température moyenne mensuelle. Même si la corrélation est statistiquement significative (p-value = 0), la variation de la température moyenne mensuelle ne semble pas expliquer d’une manière significative la taille des feux")
+    
+
+    st.write('### Corrélation : Test de Spearman (Température moy. mens. & Taille des feux)')
+    st.write('H0 : Il n'existe pas de relation linéaire entre la Température et la Taille des feux')
+    col1, col2 = st.columns(2)
+    col1.metric("Corrélation de Spearman", "-0.04421683488823663")
+    col2.metric("pvalue", "0.0")
+    st.write("On rejette H0 : Le test de Spearman confirme le rejet de notre hypothèse nulle selon laquelle il n’y a pas de corrélation entre ces 2 variables")
+    st.image("Relation_Temp&TailleFeu.png")
+
+    st.write("Plusieurs facteurs peuvent expliquer la taille des incendies (végétation, cause, précipitation moyenne, température")
+
+
+
+
+
 st.sidebar.divider()
+
 
 st.sidebar.header("L'équipe")
 
