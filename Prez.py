@@ -78,15 +78,26 @@ if page == pages[6] :
 if page == pages[7] : 
     st.write('## Modèle de classification')
     st.write('### LogisticRegression')
-    st.write('score sur le jeu de test : 0.6471896781847842')
-    st.write('score sur le jeu de train: 0.6525264009985726')
+    col1, col2 = st.columns(2)
+    col1.metric("Score X_test", "0.6471896781847842")
+    col2.metric("Score X_train", "0.6525264009985726")
+
     st.write('### RandomForestClassifier')
-    st.write('score sur le jeu de test : ')
-    st.write('score sur le jeu de train: ')
+    col1, col2 = st.columns(2)
+    col1.metric("Score X_test", "0.6554204360077117")
+    col2.metric("Score X_train", "0.9997342907106797")
+
     st.write('### DecisionTreeClassifier')
-    st.write('score sur le jeu de test : 0.5963221118196649')
-    st.write('score sur le jeu de train: 0.9997713664254686')
+    col1, col2 = st.columns(2)
+    col1.metric("Score X_test", "0.5963221118196649")
+    col2.metric("Score X_train", "0.9997713664254686")
+
+    st.write('Classification Report & Matrice de Confusion du RandomForestClassifier')
     st.image("MatConf_ClassReport-RF_1.png")
+
+    st.write('Features Importances du RandomForestClassifier (20 premières fonctionnalités)')
+    st.image("Feat_Importance_RF_1.png")
+       
     st.divider()
 
 if page == pages[8] :
