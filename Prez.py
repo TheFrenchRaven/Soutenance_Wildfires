@@ -65,6 +65,9 @@ if page == pages[4] :
 
 if page == pages[5] :
     st.write("## Régionale")
+    st.write()
+    st.write()
+    st.write
     st.write('###Titre')
     st.write('blablabla')
     st.divider()
