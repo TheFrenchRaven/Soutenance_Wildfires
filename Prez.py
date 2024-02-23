@@ -27,7 +27,8 @@ from PIL import Image
 with open('head.pkl', 'rb') as f:
     df_head = pickle.load(f)
 
-
+with open('Description jeu de donnée.md', 'r',encoding='UTF-8') as f:
+    desc = f.read()
 # Les titres 
 st.title("Analyse des feux de forêts aux USA")
 st.sidebar.title("**Feux de forêts aux USA**")
@@ -49,6 +50,8 @@ page = st.sidebar.radio("                 Cochez la page à afficher", pages)
 
 if page == pages[0] :
     st.write("## Compréhension du jeu de données : première exploration")
+    st.divider()
+    st.image("https://www.fs.usda.gov/sites/default/files/users/user3824/Photos/CWDG/SweetCrk-Milepost2Fire-Marcus-Kauffman.jpg")
     
     display = st.radio('Que souhaitez-vous montrer ?', ('Head', 'Plot'))
     if display == 'Head' : 
@@ -56,10 +59,10 @@ if page == pages[0] :
     elif display == 'Plot' : 
         st.image('plot.png')
 
-    st.divider()
+    st.markdown(desc)
     st.write("https://www.fs.usda.gov/rds/archive/catalog/RDS-2013-0009.6")
     st.divider()
-    st.image("https://www.fs.usda.gov/sites/default/files/users/user3824/Photos/CWDG/SweetCrk-Milepost2Fire-Marcus-Kauffman.jpg")
+
 
 if page == pages[1] :
     st.write("## Préparation des données : complétude des données")
