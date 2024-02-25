@@ -67,7 +67,7 @@ if page == pages[5] :
     st.write("###Relation entre nombre de feux et données géographiques")
     st.write("##Les régions Southeast et Southwest représentent le plus grand nombres de feux entre 1992 et 2020.") 
     st.divider()
-    st.image("Nombre_de_Feux_par_Régions.png")
+    st.image("Nombre_de_Feux_par_Régions.gif")
     st.divider()
     st.write('Cette carte affiche les mégafeux principalement situés à l’ouest du continent. ils sont liés a des cause Naturelles')
     st.divider()
