@@ -65,6 +65,7 @@ if page == pages[4] :
 
 if page == pages[5] :
     st.write("## Régionale")
+    st.write("##Les régions Southeast et Southwest représentent le plus grand nombres de feux entre 1992 et 2020.") 
     st.write('###Titre')
     st.write('blablabla')
     st.divider()
